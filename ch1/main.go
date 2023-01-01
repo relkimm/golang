@@ -1,9 +1,7 @@
 package main
 
-import (
-	"ch1/echo"
-)
+import "ch1/webserver"
 
 func main() {
-	echo.Execute()
+	webserver.Execute()
 }

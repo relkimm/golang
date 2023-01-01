@@ -1,9 +1,9 @@
 package main
 
 import (
-	"ch1/helloworld"
+	"ch1/echo"
 )
 
 func main() {
-	helloworld.Helloworld()
+	echo.Execute()
 }

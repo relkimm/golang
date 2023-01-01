@@ -3,14 +3,10 @@ package echo
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func Execute() {
-	result := ""
-	seperator := " "
-
-	for i := 1; i < len(os.Args); i++ {
-		result = result + seperator + os.Args[i]
-	}
+	result := strings.Join(os.Args[1:], " ")
 	fmt.Println(result)
 }

@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+type Animal interface {
+	Sounds()
+}
+
 type Dog struct {
 	name string
 }
@@ -26,6 +30,11 @@ func (c *Cat) Sounds() {
 	fmt.Printf("%s : meow.\n", c.name)
 }
 
+func sayHello(a Animal) {
+	fmt.Print("Hello!\n")
+	a.Sounds()
+}
+
 func main() {
 	dog := NewDog("Charlie")
 	dog2 := dog
@@ -40,4 +49,10 @@ func main() {
 
 	cat.Sounds()
 	cat2.Sounds()
+
+	var a Animal
+	a = NewDog("Duck")
+	sayHello(dog)
+	sayHello(cat)
+	sayHello(a)
 }

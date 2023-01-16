@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bytes"
+	"encoding/gob"
+	"fmt"
+)
 
 type Pos interface {
 	Print()
@@ -11,7 +15,7 @@ type Pos interface {
 
 type pos struct {
 	X, Y, Z int
-	Name string
+	Name    string
 }
 
 func (p *pos) Print() {
@@ -19,8 +23,15 @@ func (p *pos) Print() {
 }
 
 func (p *pos) Copy() Pos {
-	copied := NewPos(p.Name, p.X, p.Y, p.Z)
-	return copied
+	var b bytes.Buffer
+	var result *pos
+
+	e := gob.NewEncoder(&b)
+	d := gob.NewDecoder(&b)
+
+	e.Encode(p)
+	d.Decode(&result)
+	return result
 }
 
 func (p *pos) Move(x, y, z int) {

@@ -18,11 +18,11 @@ type Cat struct {
 	name string
 }
 
-func NewCat(name string) Cat {
-	return Cat{name: name}
+func NewCat(name string) *Cat {
+	return &Cat{name: name}
 }
 
-func (c Cat) Sounds() {
+func (c *Cat) Sounds() {
 	fmt.Printf("%s : meow.\n", c.name)
 }
 
@@ -37,7 +37,7 @@ func main() {
 	cat := NewCat("Barley")
 	cat2 := cat
 	cat2.name = "Sad"
-	
+
 	cat.Sounds()
 	cat2.Sounds()
 }
